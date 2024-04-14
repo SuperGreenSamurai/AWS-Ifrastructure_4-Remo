@@ -3,7 +3,7 @@ resource "aws_lb" "ninja_app_1_alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.ninja_app_1_sg02_LB01.id]
-  subnets            = ["aws_subnet.public_subnet"]
+  subnets            = aws_subnet.public_subnet.*.id
 
   enable_deletion_protection = false
   #Lots of death and suffering here, make sure it's false
